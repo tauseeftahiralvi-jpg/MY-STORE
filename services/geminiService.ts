@@ -1,8 +1,17 @@
 import { GoogleGenAI } from "@google/genai";
 import { PRODUCTS } from '../data';
 
-const apiKey = process.env.API_KEY || ''; // Ensure this is set in your environment
-const ai = new GoogleGenAI({ apiKey });
+// Safely retrieve API key to prevent crashes if process is undefined
+const getApiKey = () => {
+  try {
+    return (typeof process !== 'undefined' && process.env) ? process.env.API_KEY : '';
+  } catch (error) {
+    return '';
+  }
+};
+
+const apiKey = getApiKey();
+const ai = new GoogleGenAI({ apiKey: apiKey || 'dummy-key' }); // Fallback to avoid init error, though calls will fail if key is invalid
 
 export const getProductRecommendation = async (query: string): Promise<string[]> => {
   if (!apiKey) {
