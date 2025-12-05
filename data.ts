@@ -58,21 +58,21 @@ export const PRODUCTS: Product[] = [
     title: "Walker's Razor Slim Ultra Low Profile Compact Design Adjustable Range Shooting Hunting Hearing Protection Electronic Earmuffs",
     category: 'electronics',
     price: 38.76,
-    originalPrice: 45.00, // Estimated original price for visual discount
+    originalPrice: 45.00,
     rating: 4.8,
     reviewCount: 24300,
-    // Using a representative image for electronic earmuffs
-    image: 'https://images.unsplash.com/photo-1545127398-14699f8d7df9?auto=format&fit=crop&w=800&q=80',
+    // Updated to a reliable working image of black over-ear headphones/protection
+    image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1545127398-14699f8d7df9?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1583847268964-b28dc8f91f70?auto=format&fit=crop&w=800&q=80'
+      'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1524678606372-9879b43b520c?auto=format&fit=crop&w=800&q=80'
     ],
     shortDescription: "Ultra low-profile electronic earmuffs with sound amplification and rugged protection.",
     fullDescription: "PROTECT YOUR HEARING - Walker's Razor Ear Muffs have an ultra low-profile design featuring extra slim ear cups, for a secure fit; these ear muffs protect against hazardous noises, while still letting you hear everything going on around you clearly. SOUND AMPLIFICATION - Walker's Razor Ear Muffs amplify safe sounds using two hi-gain microphones to provide clear omnidirectional hearing; The low-end frequencies are enhanced to produce accurate, natural sound. RUGGED DESIGN - These muffs feature a rugged design with a rubberized coating, helping to prevent damage to the interior.",
     pros: ['Ultra low-profile design', 'Omnidirectional microphones', 'Sound Activated Compression', 'Rugged rubberized coating'],
     cons: ['Requires 2 AAA batteries', 'Not fully waterproof'],
     features: ['2 Hi-Gain Omnidirectional Microphones', 'Audio Input Jack', 'Low Noise / Frequency tuned for natural sound clarity', 'Compact Folding Design'],
-    affiliateLink: 'https://amazon.com', // Placeholder as no specific link was provided
+    affiliateLink: 'https://amzn.to/4ozTD4I', 
     isFeatured: true
   }
 ];

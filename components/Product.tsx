@@ -3,15 +3,36 @@ import { Link } from 'react-router-dom';
 import { Star, ArrowRight, ExternalLink } from 'lucide-react';
 import { Product } from '../types';
 
+// Helper for image optimization
+const getOptimizedImageUrl = (urlStr: string, width: number) => {
+  if (!urlStr || !urlStr.includes('images.unsplash.com')) return urlStr;
+  try {
+    const url = new URL(urlStr);
+    url.searchParams.set('w', width.toString());
+    url.searchParams.set('auto', 'format');
+    url.searchParams.set('fit', 'crop');
+    url.searchParams.set('q', '80');
+    return url.toString();
+  } catch (e) {
+    return urlStr;
+  }
+};
+
 export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
+  // Request a 500px width image, which is sufficient for grid columns (even on high DPI mobile)
+  const optimizedImage = getOptimizedImageUrl(product.image, 500);
+
   return (
     <div className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full">
       <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-gray-50">
         <img 
-          src={product.image} 
+          src={optimizedImage} 
           alt={product.title} 
+          width="500"
+          height="500"
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
+          decoding="async"
         />
         {product.originalPrice && (
           <span className="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
@@ -52,19 +73,25 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   );
 };
 
-export const CategoryCard: React.FC<{ category: any }> = ({ category }) => (
-  <Link to={`/category/${category.slug}`} className="group relative rounded-2xl overflow-hidden aspect-[4/3]">
-    <img 
-      src={category.image} 
-      alt={category.name} 
-      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-    />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-    <div className="absolute bottom-0 left-0 p-6">
-      <h3 className="text-xl font-bold text-white mb-1">{category.name}</h3>
-      <p className="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">
-        {category.description}
-      </p>
-    </div>
-  </Link>
-);
+export const CategoryCard: React.FC<{ category: any }> = ({ category }) => {
+  const optimizedImage = getOptimizedImageUrl(category.image, 600);
+  
+  return (
+    <Link to={`/category/${category.slug}`} className="group relative rounded-2xl overflow-hidden aspect-[4/3]">
+      <img 
+        src={optimizedImage} 
+        alt={category.name} 
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 p-6">
+        <h3 className="text-xl font-bold text-white mb-1">{category.name}</h3>
+        <p className="text-sm text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">
+          {category.description}
+        </p>
+      </div>
+    </Link>
+  );
+};

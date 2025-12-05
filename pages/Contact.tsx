@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, SEO } from '../components/Layout';
-import { Mail, MapPin, Send, MessageSquare, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -52,9 +52,9 @@ const Contact: React.FC = () => {
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
                        <Mail className="text-brand-400 mt-1" />
-                       <div>
+                       <div className="overflow-hidden">
                          <span className="block font-semibold">Email</span>
-                         <span className="text-gray-400">support@zenithfinds.com</span>
+                         <a href="mailto:TAUSEEFTAHIR@AOL.COM" className="text-gray-400 hover:text-white transition-colors break-all">TAUSEEFTAHIR@AOL.COM</a>
                        </div>
                     </div>
                     <div className="flex items-start gap-4">
