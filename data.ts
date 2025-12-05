@@ -6,28 +6,28 @@ export const CATEGORIES: Category[] = [
     name: 'Electronics',
     slug: 'electronics',
     description: 'Top-tier gadgets, headphones, and smart devices.',
-    image: 'https://picsum.photos/800/600?random=1'
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'c2',
     name: 'Home & Kitchen',
     slug: 'home-kitchen',
     description: 'Essentials for a modern, efficient living space.',
-    image: 'https://picsum.photos/800/600?random=2'
+    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'c3',
     name: 'Fitness & Health',
     slug: 'fitness',
     description: 'Gear to keep you moving and feeling your best.',
-    image: 'https://picsum.photos/800/600?random=3'
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'c4',
     name: 'Books & Media',
     slug: 'books',
     description: 'Best-sellers, educational reads, and entertainment.',
-    image: 'https://picsum.photos/800/600?random=4'
+    image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
