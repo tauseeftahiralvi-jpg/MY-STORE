@@ -22,14 +22,30 @@ const CategoryPage: React.FC = () => {
   }
 
   // Schema for list of products
+  // Enhanced to include Product schema within ListItem
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "name": category.name,
+    "description": category.description,
     "itemListElement": products.map((product, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `${window.location.origin}/#/product/${product.id}`,
-      "name": product.title
+      "item": {
+        "@type": "Product",
+        "name": product.title,
+        "image": product.image,
+        "description": product.shortDescription,
+        "url": `${window.location.origin}/#/product/${product.id}`,
+        "sku": product.id,
+        "offers": {
+          "@type": "Offer",
+          "price": product.price,
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": product.affiliateLink
+        }
+      }
     }))
   };
 
@@ -52,11 +68,16 @@ const CategoryPage: React.FC = () => {
     ]
   };
 
+  const pageUrl = `${window.location.origin}/#/category/${category.slug}`;
+
   return (
     <Layout>
       <SEO 
-        title={category.name} 
+        title={`${category.name} - Best Products & Reviews`} 
         description={category.description} 
+        image={category.image}
+        url={pageUrl}
+        type="website"
         schema={[itemListSchema, breadcrumbSchema]}
       />
       
